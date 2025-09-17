@@ -1,15 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { GameRoom } from '@/lib/types';
-import { flashcards } from '@/data/flashcards';
-
-// In-memory storage for demo (use Redis in production)
-// Persist the map on globalThis so it survives module reloads in dev (Next dev may reload modules
-// and create separate Map instances for different route handlers).
-const _globalAny: any = globalThis as any;
-if (!_globalAny.__gameRooms) {
-  _globalAny.__gameRooms = new Map<string, GameRoom>();
-}
-const gameRooms: Map<string, GameRoom> = _globalAny.__gameRooms;
+import { gameRooms } from '@/lib/gameState';
 
 export async function POST(request: NextRequest) {
   const { userId } = await request.json();
@@ -31,4 +22,3 @@ export async function POST(request: NextRequest) {
   return NextResponse.json({ roomId, gameState: gameRoom });
 }
 
-export { gameRooms };

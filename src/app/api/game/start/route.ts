@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { gameRooms } from '../create/route';
+import { gameRooms } from '@/lib/gameState';
 import { flashcards } from '@/data/flashcards';
 
 export async function POST(request: NextRequest) {

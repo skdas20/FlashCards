@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { gameRooms } from '../create/route';
+import { gameRooms } from '@/lib/gameState';
 
 const answeredCards = new Map<string, Set<string>>();
 const attemptedCards = new Map<string, Set<string>>(); // Track all attempts
